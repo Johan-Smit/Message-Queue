@@ -1,0 +1,7 @@
+[
+    {
+        "nodeID": "LOGGER_MAIN",
+        "location": "logger",
+        "topics": ["*"]
+    }
+]
