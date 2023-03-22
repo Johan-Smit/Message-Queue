@@ -15,6 +15,9 @@ import org.springframework.stereotype.Service;
 public final class ConfigService {
 
     @Autowired FileRWService fileRW;
+
+    @Autowired NodeManagerService nodeManagerService;
+
     private JSONParser parser;
 
     private String configFilePath = "src/main/resources/broker.config.json";
@@ -34,16 +37,23 @@ public final class ConfigService {
 
                 String nodeID = (String) obj.get("nodeID");
                 String location = (String) obj.get("location");
+                int port = Integer.parseInt((String) obj.get("port"));
                 JSONArray jsonTopics = (JSONArray) obj.get("topics");
                 
                 ArrayList<String> topics = new ArrayList<>();
 
                 for (Object t: jsonTopics) {
-                    topics.add(t.toString());
+                    for (String s: ((String) t).split(",")) {
+                        topics.add(s);
+                    }
                 }
 
-                System.out.println(nodeID + " registered");
+                System.out.println(nodeID + " read, registering...");
+
+                nodeManagerService.register(nodeID, location, port, topics);
             }
+
+            nodeManagerService.activate();
 
             System.out.println("\n::::::::: Initializing NodeManager: Success!\n");
         }
