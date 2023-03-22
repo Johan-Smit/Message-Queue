@@ -1,6 +1,7 @@
 package com.turtleMQ.broker.components;
 
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -13,19 +14,22 @@ public class Node {
     @Getter
     private String nodeID;
 
+    private boolean isActive = false;
+
     private Socket socket;
     private String location;
     private int port;
 
-    public Node(String location, String nodeID, int port) {
-        this.location = location;
+    public Node(String nodeID, String location, int port) {
         this.nodeID = nodeID;
+        this.location = location;
         this.port = port;
     }
 
     public void connect() {
         try {
             socket = new Socket(location, port);
+            isActive = true;
         }
         catch (UnknownHostException unknownHostException) {
             //System.out.println("Error: " + unknownHostException);
@@ -36,9 +40,20 @@ public class Node {
     }
 
     public boolean isActive() {
-        if (socket == null)
-            return false;
-        return socket.isConnected();
+        return ((socket != null) && (socket.isConnected()));
+    }
+
+    public void send(String payload) {
+        if (isActive()) {
+            try {
+                new OutputStreamWriter(socket.getOutputStream()).write(payload);
+            } catch (IOException e) {
+                System.out.println("Error: " + e);
+            }
+        }
+        else {
+            System.out.println(nodeID + " is inactive, message not sent");
+        }
     }
 
 }

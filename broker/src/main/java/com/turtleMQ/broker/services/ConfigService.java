@@ -48,7 +48,7 @@ public final class ConfigService {
                     }
                 }
 
-                System.out.println(nodeID + " read, registering...");
+                System.out.println(nodeID + " parsed, registering...");
 
                 nodeManagerService.register(nodeID, location, port, topics);
             }

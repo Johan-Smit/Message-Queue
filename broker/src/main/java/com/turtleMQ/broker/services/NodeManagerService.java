@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.turtleMQ.broker.components.NodeQueue;
+import com.turtleMQ.broker.entities.Message;
 
 @Service
 public class NodeManagerService {
@@ -29,6 +30,12 @@ public class NodeManagerService {
     public void activate() {
         for(Map.Entry<String, NodeQueue> entry : nodeQueues.entrySet()) {
             entry.getValue().start();
+        }
+    }
+
+    public void send(Message message) {
+        for (int i=0; i<message.getDestinationNodes().length; i++) {
+            nodeQueues.get(message.getDestinationNodes()[i]).send(message.getPayload());
         }
     }
 }
