@@ -25,11 +25,14 @@ public class NodeQueue extends Thread {
     
     public void addNode(String nodeID, String location, int port) {
         receivers.add(new Node(nodeID, location, port));
+        System.out.println("Successfully added " + nodeID);
     }
 
     public void send(String payload) {
         if (isActive) {
-
+            receivers.forEach(r -> {
+                r.send(payload);
+            });
         }
         else {
             System.out.println(topic + " queue is inactive, message not sent");
