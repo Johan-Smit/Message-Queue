@@ -1,8 +1,8 @@
 [
     {
-        "nodeID": "LOGGER_MAIN",
-        "location": "logger",
-        "port": "8080",
-        "topics": ["*"]
+        "nodeID": "EXAMPLE",
+        "location": "127.0.0.1",
+        "port": "8008",
+        "topics": ["test"]
     }
 ]
