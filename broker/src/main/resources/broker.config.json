@@ -1,8 +1,14 @@
 [
-    {
-        "nodeID": "EXAMPLE",
-        "location": "127.0.0.1",
-        "port": "8008",
-        "topics": ["test"]
-    }
+  {
+    "nodeID": "STUCK",
+    "location": "127.0.0.1",
+    "port": "8008",
+    "topics": ["tree"]
+  },
+  {
+    "nodeID": "EXAMPLE",
+    "location": "127.0.0.1",
+    "port": "8002",
+    "topics": ["fire"]
+  }
 ]
