@@ -19,16 +19,12 @@
     <exec.mainClass>com.saps.App</exec.mainClass>
   </properties>
 
-  
-
 	<repositories>
 		<repository>
 		    <id>jitpack.io</id>
 		    <url>https://jitpack.io</url>
 		</repository>
 	</repositories>
-
-
 
   <dependencies>
     <dependency>
@@ -41,7 +37,7 @@
 	    <groupId>com.github.Johan-Smit</groupId>
 	    <artifactId>Message-Queue-Plugin</artifactId>
 	    <version>beta</version>
-	</dependency>
+	  </dependency>
   </dependencies>
 
   <build>
