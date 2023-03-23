@@ -9,14 +9,20 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
+
+import jakarta.annotation.PostConstruct;
 
 @Service
 public final class ConfigService {
 
-    @Autowired FileRWService fileRW;
+    @Autowired
+    FileRWService fileRW;
 
-    @Autowired NodeManagerService nodeManagerService;
+    @Autowired
+    NodeManagerService nodeManagerService;
 
     private JSONParser parser;
 
@@ -26,6 +32,7 @@ public final class ConfigService {
         parser = new JSONParser();
     }
 
+    @PostConstruct
     public void initialize() {
         System.out.println("\n::::::::: Initializing NodeManager\n");
         try {

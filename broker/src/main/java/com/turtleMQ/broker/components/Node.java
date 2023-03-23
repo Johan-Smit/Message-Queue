@@ -2,6 +2,7 @@ package com.turtleMQ.broker.components;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -46,7 +47,8 @@ public class Node {
     public void send(String payload) {
         if (isActive()) {
             try {
-                new OutputStreamWriter(socket.getOutputStream()).write(payload);
+                System.out.println("Sending " + payload + " to " + nodeID );
+                new PrintWriter(socket.getOutputStream(), true).println(payload);
             } catch (IOException e) {
                 System.out.println("Error: " + e);
             }
