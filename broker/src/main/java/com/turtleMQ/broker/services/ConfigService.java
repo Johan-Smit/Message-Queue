@@ -23,7 +23,7 @@ public final class ConfigService {
 
     @Autowired
     NodeManagerService nodeManagerService;
-
+    
     private JSONParser parser;
 
     private String configFilePath = "src/main/resources/broker.config.json";

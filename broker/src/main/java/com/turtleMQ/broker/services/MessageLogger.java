@@ -9,6 +9,8 @@ import java.time.LocalTime;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
 
+import com.turtleMQ.broker.entities.Message;
+
 @Service
 public class MessageLogger {
     Date today = new Date();
@@ -25,10 +27,12 @@ public class MessageLogger {
         e.printStackTrace();
       }
     }
-    public void WriteLogger(JSONObject message) throws IOException{
+    public void WriteLogger(Message message) throws IOException{
         FileWriter myWriter = new FileWriter(today+".txt");
         LocalTime myTimeObj = LocalTime.now();
-        myWriter.append(myTimeObj.toString() + message.toJSONString());
+        myWriter.append(myTimeObj.toString() + " " + message.getId().toString()
+         + " " +message.getDestinationNodes()+ " "+ message.getPayload() +"\n");
+        myWriter.close();
     }
     
 }
