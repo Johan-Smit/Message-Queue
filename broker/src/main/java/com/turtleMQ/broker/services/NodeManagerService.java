@@ -38,7 +38,7 @@ public class NodeManagerService {
     public void send(Message message) {
         for (int i=0; i<message.getDestinationNodes().length; i++) {
             try{
-                nodeQueues.get("test").send(message.getPayload());
+                nodeQueues.get(message.getDestinationNodes()[i]).send(message.getPayload());
             }
             catch (Exception e) {
                 System.out.println(message.getDestinationNodes()[i] + " caused an error:");
