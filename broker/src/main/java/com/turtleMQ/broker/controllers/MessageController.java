@@ -15,14 +15,17 @@ import com.turtleMQ.broker.entities.Message;
 
 @RestController
 class MessageController {
-    @Autowired NodeManagerService nodeManagerService;
-    @Autowired MessageLogger messageLogger;
+    @Autowired
+    NodeManagerService nodeManagerService;
+    @Autowired
+    MessageLogger messageLogger;
 
-    MessageController() { }
+    MessageController() {
+    }
 
     @PostMapping("/messages")
-    void newMessage(@RequestBody Message newMessage) throws IOException {
-        messageLogger.WriteLogger(newMessage);
+    Message newMessage(@RequestBody Message newMessage) {
         nodeManagerService.send(newMessage);
+        return newMessage;
     }
 }
