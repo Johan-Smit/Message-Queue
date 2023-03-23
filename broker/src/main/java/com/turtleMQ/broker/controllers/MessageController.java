@@ -18,7 +18,8 @@ class MessageController {
     MessageController() { }
 
     @PostMapping("/messages")
-    void newMessage(@RequestBody Message newMessage) {
+    Message newMessage(@RequestBody Message newMessage) {
         nodeManagerService.send(newMessage);
+        return newMessage;
     }
 }
