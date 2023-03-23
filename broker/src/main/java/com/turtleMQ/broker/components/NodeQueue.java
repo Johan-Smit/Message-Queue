@@ -29,14 +29,7 @@ public class NodeQueue extends Thread {
     }
 
     public void send(String payload) {
-        if (isActive) {
-            receivers.forEach(r -> {
-                r.send(payload);
-            });
-        }
-        else {
-            System.out.println(topic + " queue is inactive, message not sent");
-        }
+        messages.add(payload);
     }
 
     @Override
@@ -56,11 +49,11 @@ public class NodeQueue extends Thread {
         isActive = true;
 
         while (true) {
-            if (isActive()) {
-                if (messages.peek() != null) {
-                    String payload = messages.remove();
-                    receivers.forEach(r -> r.send(payload));
-                }
+            if (messages.peek() != null) {
+                String payload = messages.remove();
+                receivers.forEach(r -> {
+                    r.send(payload);
+                });
             }
         }
     }

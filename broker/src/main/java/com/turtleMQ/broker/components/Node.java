@@ -15,8 +15,6 @@ public class Node {
     @Getter
     private String nodeID;
 
-    private boolean isActive = false;
-
     private Socket socket;
     private String location;
     private int port;
@@ -30,7 +28,6 @@ public class Node {
     public void connect() {
         try {
             socket = new Socket(location, port);
-            isActive = true;
         }
         catch (UnknownHostException unknownHostException) {
             //System.out.println("Error: " + unknownHostException);
@@ -41,21 +38,17 @@ public class Node {
     }
 
     public boolean isActive() {
-        return ((socket != null) && (socket.isConnected()));
+        return (socket != null);
     }
 
-    public void send(String payload) {
-        if (isActive()) {
-            try {
-                System.out.println("Sending " + payload + " to " + nodeID );
+    public synchronized void send(String payload) {
+        try {
+            if (isActive())
                 new PrintWriter(socket.getOutputStream(), true).println(payload);
-            } catch (IOException e) {
-                System.out.println("Error: " + e);
-            }
-        }
-        else {
-            System.out.println(nodeID + " is inactive, message not sent");
+            connect();
+
+        } catch (IOException e) {
+            System.out.println("Error: " + e);
         }
     }
-
 }

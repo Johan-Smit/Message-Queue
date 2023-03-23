@@ -1,16 +1,13 @@
 package com.turtleMQ.nodeconnector.example;
 
 import com.turtleMQ.nodeconnector.handler.MessageHandler;
+import com.turtleMQ.nodeconnector.handler.MessageReceiver;
 
-public class Example extends MessageHandler{
-
-    public Example() {
-        super(8008);
-    }
+public class Example implements MessageReceiver {
 
     @Override
-    public void handle(String payload) {
+    public synchronized void handle(String payload) {
         System.out.println(payload);
     }
-    
+
 }
