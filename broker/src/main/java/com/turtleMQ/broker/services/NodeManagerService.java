@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.turtleMQ.broker.components.NodeQueue;
+import com.turtleMQ.broker.entities.Message;
 
 @Service
+@Scope("singleton")
 public class NodeManagerService {
     
     private HashMap<String, NodeQueue> nodeQueues;
@@ -29,6 +32,18 @@ public class NodeManagerService {
     public void activate() {
         for(Map.Entry<String, NodeQueue> entry : nodeQueues.entrySet()) {
             entry.getValue().start();
+        }
+    }
+
+    public void send(Message message) {
+        for (int i=0; i<message.getDestinationNodes().length; i++) {
+            try{
+                nodeQueues.get("test").send(message.getPayload());
+            }
+            catch (Exception e) {
+                System.out.println(message.getDestinationNodes()[i] + " caused an error:");
+                System.out.println(e);
+            }
         }
     }
 }

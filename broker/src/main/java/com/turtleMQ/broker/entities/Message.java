@@ -1,11 +1,11 @@
-package com.turtleMQ.broker;
+package com.turtleMQ.broker.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
-class Message {
+public class Message {
     private @Id @GeneratedValue Long id;
     private String payload;
     private String [] destinationNodes;
