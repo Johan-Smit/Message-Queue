@@ -36,14 +36,15 @@ public class NodeQueue extends Thread {
     public void run() {
 
         receivers.forEach(r -> {
+            String receiverStatus;
             r.connect();
             if (r.isActive()) {
-                System.out.print(r.getNodeID() + " online");
+                receiverStatus = r.getNodeID() + " online";
             }
             else {
-                System.out.print(r.getNodeID() + " offline");
+                receiverStatus = r.getNodeID() + " offline";
             }
-            System.out.println(" for topic " + topic);
+            System.out.println(receiverStatus + " for topic " + topic);
         });
 
         isActive = true;
