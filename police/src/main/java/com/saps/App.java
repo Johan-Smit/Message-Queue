@@ -10,7 +10,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        MessageHandler messageHandler = new MessageHandler(8008);
+        MessageHandler messageHandler = new MessageHandler(8000);
         messageHandler.register(new CallCenter());
         messageHandler.start();
 

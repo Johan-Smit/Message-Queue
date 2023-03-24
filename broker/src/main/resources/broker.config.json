@@ -1,9 +1,9 @@
 [
     {
-        "nodeID": "EXAMPLE",
+        "nodeID": "Medical Attention Reports",
         "location": "127.0.0.1",
         "port": "8008",
-        "topics": ["test"]
+        "topics": ["medical"]
     },
     {
         "nodeID": "Crime Reports",
