@@ -1,0 +1,10 @@
+2023-03-24T08:28:12.950185700||1||<crime,medical>||Helpp!
+2023-03-24T08:31:20.116473900||1||<crime,medical>||Helpp!
+2023-03-24T08:31:28.721006700||1||<crime,medical>||Helpp!
+2023-03-24T08:31:29.442200||1||<crime,medical>||Helpp!
+2023-03-24T08:31:29.866065400||1||<crime,medical>||Helpp!
+2023-03-24T08:31:30.925728500||1||<crime,medical>||Helpp!
+2023-03-24T08:31:31.567214900||1||<crime,medical>||Helpp!
+2023-03-24T08:31:45.472256900||1||<crime,medical>||My wife is hangry!
+2023-03-24T08:31:46.848237500||1||<crime,medical>||My wife is hangry!
+2023-03-24T08:32:17.777754200||1||<crime>||The neighbour didn't trim the lawn

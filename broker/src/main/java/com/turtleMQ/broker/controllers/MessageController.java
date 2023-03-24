@@ -25,6 +25,7 @@ class MessageController {
 
     @PostMapping("/messages")
     Message newMessage(@RequestBody Message newMessage) {
+        messageLogger.WriteLogger(newMessage);
         nodeManagerService.send(newMessage);
         return newMessage;
     }

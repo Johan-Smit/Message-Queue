@@ -22,13 +22,13 @@ public class MessageLogger {
     public MessageLogger() {
     }
 
-    public void WriteLogger(Message message) throws IOException {
+    public void WriteLogger(Message message) {
         try {
             LocalDate today = LocalDate.now();
             LocalDateTime todayTime = LocalDateTime.now();
             String destinations = String.join(",", message.getDestinationNodes());
             try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(today + ".txt"), "utf-8"))) {
+                    new FileOutputStream(today + ".txt", true), "utf-8"))) {
                 writer.write(todayTime.toString() + "||" + message.getId().toString()
                         + "||<" + destinations + ">||" + message.getPayload() + "\n");
             }
