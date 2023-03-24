@@ -4,5 +4,17 @@
         "location": "127.0.0.1",
         "port": "8008",
         "topics": ["test"]
+    },
+    {
+        "nodeID": "Crime Reports",
+        "location": "127.0.0.1",
+        "port": "8001",
+        "topics": ["crime"]
+    },
+    {
+        "nodeID": "Road Accident Reports",
+        "location": "127.0.0.1",
+        "port": "8002",
+        "topics": ["accidents"]
     }
 ]
